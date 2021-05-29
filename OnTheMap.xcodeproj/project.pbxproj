@@ -17,6 +17,7 @@
 		953D5F2E2661BCC8000E7A54 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D5F2D2661BCC8000E7A54 /* ListViewController.swift */; };
 		953D5F302661BCED000E7A54 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D5F2F2661BCED000E7A54 /* AddLocationViewController.swift */; };
 		953D5F322661BD0D000E7A54 /* FindLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D5F312661BD0D000E7A54 /* FindLocationViewController.swift */; };
+		953D5F342661C6BE000E7A54 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D5F332661C6BE000E7A54 /* LocationTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		953D5F2D2661BCC8000E7A54 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		953D5F2F2661BCED000E7A54 /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		953D5F312661BD0D000E7A54 /* FindLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindLocationViewController.swift; sourceTree = "<group>"; };
+		953D5F332661C6BE000E7A54 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,8 +93,17 @@
 				953D5F2D2661BCC8000E7A54 /* ListViewController.swift */,
 				953D5F2F2661BCED000E7A54 /* AddLocationViewController.swift */,
 				953D5F312661BD0D000E7A54 /* FindLocationViewController.swift */,
+				953D5F352661C6CA000E7A54 /* View */,
 			);
 			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		953D5F352661C6CA000E7A54 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				953D5F332661C6BE000E7A54 /* LocationTableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,6 +178,7 @@
 			files = (
 				953D5F2A2661BC51000E7A54 /* LoginViewController.swift in Sources */,
 				953D5F302661BCED000E7A54 /* AddLocationViewController.swift in Sources */,
+				953D5F342661C6BE000E7A54 /* LocationTableViewCell.swift in Sources */,
 				953D5F1426607D76000E7A54 /* AppDelegate.swift in Sources */,
 				953D5F1626607D76000E7A54 /* SceneDelegate.swift in Sources */,
 				953D5F2E2661BCC8000E7A54 /* ListViewController.swift in Sources */,

@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-class FindLocationViewController: UIViewController {
+class FindLocationViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
