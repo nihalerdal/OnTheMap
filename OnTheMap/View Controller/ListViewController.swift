@@ -7,15 +7,27 @@
 
 import UIKit
 
-class ListViewController: UIViewController {
+class ListViewController: UIViewController, UITableViewDelegate {
 
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func addLocation(_ sender: Any) {
+    }
+    
+    @IBAction func refresh(_ sender: Any) {
+    }
+    
+    
+    @IBAction func logOut(_ sender: Any) {
+    }
+    
+    
     /*
     // MARK: - Navigation
 

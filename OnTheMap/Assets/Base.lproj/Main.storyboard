@@ -19,22 +19,37 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vTK-He-vuJ">
                                 <rect key="frame" x="0.0" y="56" width="414" height="703"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="v2C-DG-5du" id="3zf-3D-FUU"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jrG-D9-Qde"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" id="f5G-H8-IKU">
-                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="sb6-dZ-hqs"/>
+                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="sb6-dZ-hqs">
+                            <connections>
+                                <action selector="logOut:" destination="v2C-DG-5du" id="puY-18-ClW"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="swW-if-X9m">
                                 <connections>
+                                    <action selector="addLocation:" destination="v2C-DG-5du" id="H4p-hS-PTh"/>
                                     <segue destination="CBj-ri-fiR" kind="show" id="wKj-KY-zi6"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="refresh" id="WVS-Mk-TcP"/>
+                            <barButtonItem systemItem="refresh" id="WVS-Mk-TcP">
+                                <connections>
+                                    <action selector="refreshData:" destination="v2C-DG-5du" id="8Q8-YR-Xks"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="vTK-He-vuJ" id="FhC-4P-apt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Y3-5M-fe4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -73,6 +88,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="findLocationTapped:" destination="CBj-ri-fiR" eventType="touchUpInside" id="Erl-AM-fjZ"/>
                                     <segue destination="HuI-R3-Wc7" kind="show" id="BEJ-Af-vM1"/>
                                 </connections>
                             </button>
@@ -81,8 +97,16 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Location" id="bmt-M2-Ykw">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="eHQ-3B-tZ4"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="eHQ-3B-tZ4">
+                            <connections>
+                                <action selector="cancel:" destination="CBj-ri-fiR" id="Rkl-27-A4U"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="linkTextField" destination="Ooy-c2-Yhw" id="CBj-yd-yzt"/>
+                        <outlet property="locationTextField" destination="Utq-JZ-ScD" id="2x9-xd-aLd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4BY-s7-l2e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -99,6 +123,9 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="HGb-ij-qqK">
                                 <rect key="frame" x="0.0" y="56" width="414" height="703"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="HuI-R3-Wc7" id="yRg-t9-qcg"/>
+                                </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhg-NT-ukc">
                                 <rect key="frame" x="50" y="644" width="314" height="58"/>
@@ -108,12 +135,18 @@
                                 <state key="normal" title="FINISH">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="finishTapped:" destination="HuI-R3-Wc7" eventType="touchUpInside" id="fhr-vZ-YUV"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Pzj-TI-oyA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Location" id="q6t-Tv-QLB"/>
+                    <connections>
+                        <outlet property="mapView" destination="HGb-ij-qqK" id="jV4-r4-mBa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kW9-Y1-uYP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -141,22 +174,38 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="jvQ-Hm-rlJ" id="gdk-7w-7bG"/>
+                                    <outlet property="delegate" destination="jvQ-Hm-rlJ" id="yyY-Nh-qc8"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="raN-cV-Gnn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" id="zhN-dm-dVQ">
-                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="8pC-si-zTR"/>
+                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="8pC-si-zTR">
+                            <connections>
+                                <action selector="logOut:" destination="jvQ-Hm-rlJ" id="UWo-TS-2X6"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="Mq9-Vs-lW6">
                                 <connections>
+                                    <action selector="addLocation:" destination="jvQ-Hm-rlJ" id="frb-cd-poO"/>
                                     <segue destination="CBj-ri-fiR" kind="show" id="tpy-Zd-A2C"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="refresh" id="fqn-4W-GGp"/>
+                            <barButtonItem systemItem="refresh" id="fqn-4W-GGp">
+                                <connections>
+                                    <action selector="refresh:" destination="jvQ-Hm-rlJ" id="WfV-3O-FES"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="bvW-Qc-ATJ" id="uwB-TK-YTQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fan-7v-NGz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -236,6 +285,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="logIn:" destination="uka-3v-DNb" eventType="touchUpInside" id="4nq-dm-bJa"/>
                                     <segue destination="VL7-kk-hSH" kind="show" id="Wen-Cf-8fR"/>
                                 </connections>
                             </button>
@@ -251,6 +301,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FRU-as-oq8">
                                         <rect key="frame" x="187" y="0.0" width="54" height="30"/>
                                         <state key="normal" title="Sign Up"/>
+                                        <connections>
+                                            <action selector="signUp:" destination="uka-3v-DNb" eventType="touchUpInside" id="dRV-9B-6Bc"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -264,9 +317,7 @@
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="iRZ-cD-zWw" id="b4t-s2-CWN"/>
-                        <outlet property="loginButton" destination="cEA-wX-pBT" id="TPl-QD-lc5"/>
                         <outlet property="passwordTextField" destination="lTd-fn-UIK" id="WoX-YQ-Che"/>
-                        <outlet property="signUpButton" destination="FRU-as-oq8" id="OoB-Nw-g60"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k2n-X2-ayd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -280,6 +331,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="dVD-4h-A9c"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iQT-LI-DUs">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

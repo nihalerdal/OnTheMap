@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import MapKit
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, MKMapViewDelegate {
 
+    @IBOutlet weak var mapView: MKMapView!
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -16,6 +19,19 @@ class MapViewController: UIViewController {
     }
     
 
+    @IBAction func addLocation(_ sender: Any) {
+    }
+    
+    
+    @IBAction func refreshData(_ sender: Any) {
+    }
+    
+    @IBAction func logOut(_ sender: Any) {
+    }
+    
+    
+    
+    
     /*
     // MARK: - Navigation
 

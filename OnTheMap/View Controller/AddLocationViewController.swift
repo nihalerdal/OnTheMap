@@ -9,6 +9,8 @@ import UIKit
 
 class AddLocationViewController: UIViewController {
 
+    @IBOutlet weak var locationTextField: UITextField!
+    @IBOutlet weak var linkTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -16,6 +18,12 @@ class AddLocationViewController: UIViewController {
     }
     
 
+    @IBAction func findLocationTapped(_ sender: Any) {
+    }
+    
+    
+    @IBAction func cancel(_ sender: Any) {
+    }
     /*
     // MARK: - Navigation
 
