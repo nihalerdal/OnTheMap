@@ -286,7 +286,7 @@
                                 </state>
                                 <connections>
                                     <action selector="logIn:" destination="uka-3v-DNb" eventType="touchUpInside" id="4nq-dm-bJa"/>
-                                    <segue destination="VL7-kk-hSH" kind="show" id="Wen-Cf-8fR"/>
+                                    <segue destination="VL7-kk-hSH" kind="show" identifier="tabBarSegue" id="Wen-Cf-8fR"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="vER-Bh-XaK">
@@ -317,7 +317,9 @@
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="iRZ-cD-zWw" id="b4t-s2-CWN"/>
+                        <outlet property="loginButton" destination="cEA-wX-pBT" id="wUR-d5-W2P"/>
                         <outlet property="passwordTextField" destination="lTd-fn-UIK" id="WoX-YQ-Che"/>
+                        <outlet property="signUpButton" destination="FRU-as-oq8" id="Rij-8F-BWj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k2n-X2-ayd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

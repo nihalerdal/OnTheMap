@@ -18,6 +18,9 @@
 		953D5F302661BCED000E7A54 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D5F2F2661BCED000E7A54 /* AddLocationViewController.swift */; };
 		953D5F322661BD0D000E7A54 /* FindLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D5F312661BD0D000E7A54 /* FindLocationViewController.swift */; };
 		953D5F342661C6BE000E7A54 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D5F332661C6BE000E7A54 /* LocationTableViewCell.swift */; };
+		953D5F372666EE66000E7A54 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D5F362666EE66000E7A54 /* UdacityClient.swift */; };
+		953D5F3C2666F5F3000E7A54 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D5F3B2666F5F3000E7A54 /* LoginRequest.swift */; };
+		953D5F3E2666F621000E7A54 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D5F3D2666F621000E7A54 /* LoginResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		953D5F2F2661BCED000E7A54 /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		953D5F312661BD0D000E7A54 /* FindLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindLocationViewController.swift; sourceTree = "<group>"; };
 		953D5F332661C6BE000E7A54 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
+		953D5F362666EE66000E7A54 /* UdacityClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
+		953D5F3B2666F5F3000E7A54 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		953D5F3D2666F621000E7A54 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +74,9 @@
 			children = (
 				953D5F1326607D76000E7A54 /* AppDelegate.swift */,
 				953D5F1526607D76000E7A54 /* SceneDelegate.swift */,
+				953D5F382666EE6F000E7A54 /* UdacityClient */,
+				953D5F392666F0B5000E7A54 /* Requests */,
+				953D5F3A2666F0CE000E7A54 /* Responses */,
 				953D5F2826607E97000E7A54 /* View Controller */,
 				953D5F2726607DC1000E7A54 /* Assets */,
 				953D5F2126607D7B000E7A54 /* Info.plist */,
@@ -104,6 +113,30 @@
 				953D5F332661C6BE000E7A54 /* LocationTableViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		953D5F382666EE6F000E7A54 /* UdacityClient */ = {
+			isa = PBXGroup;
+			children = (
+				953D5F362666EE66000E7A54 /* UdacityClient.swift */,
+			);
+			path = UdacityClient;
+			sourceTree = "<group>";
+		};
+		953D5F392666F0B5000E7A54 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				953D5F3B2666F5F3000E7A54 /* LoginRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		953D5F3A2666F0CE000E7A54 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				953D5F3D2666F621000E7A54 /* LoginResponse.swift */,
+			);
+			path = Responses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,11 +212,14 @@
 				953D5F2A2661BC51000E7A54 /* LoginViewController.swift in Sources */,
 				953D5F302661BCED000E7A54 /* AddLocationViewController.swift in Sources */,
 				953D5F342661C6BE000E7A54 /* LocationTableViewCell.swift in Sources */,
+				953D5F3C2666F5F3000E7A54 /* LoginRequest.swift in Sources */,
 				953D5F1426607D76000E7A54 /* AppDelegate.swift in Sources */,
 				953D5F1626607D76000E7A54 /* SceneDelegate.swift in Sources */,
 				953D5F2E2661BCC8000E7A54 /* ListViewController.swift in Sources */,
 				953D5F2C2661BCA6000E7A54 /* MapViewController.swift in Sources */,
 				953D5F322661BD0D000E7A54 /* FindLocationViewController.swift in Sources */,
+				953D5F3E2666F621000E7A54 /* LoginResponse.swift in Sources */,
+				953D5F372666EE66000E7A54 /* UdacityClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
