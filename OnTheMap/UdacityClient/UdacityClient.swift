@@ -18,18 +18,60 @@ class UdacityClient {
     enum Endpoints {
         
         case createSessionId
+        case getLocations
         
             
         var stringValue: String{
             switch self {
             case .createSessionId: return "https://onthemap-api.udacity.com/v1/session"
-        
+            case .getLocations: return "https://onthemap-api.udacity.com/v1/StudentLocation?order=-updatedAt"
             }
         
         }
         
         var url: URL{
             return URL(string: stringValue)!
+        }
+    }
+    
+    class func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) -> URLSessionTask{
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            
+            let decoder = JSONDecoder()
+            do {
+                
+                let responseObject = try decoder.decode(ResponseType.self, from: data)
+                DispatchQueue.main.async {
+                    completion(responseObject, nil)
+                }
+            } catch {
+                
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+            }
+        }
+    
+    task.resume()
+    
+    return task
+}
+    
+    class func getStudentLocations(completion: @escaping ([StudentLocation], Error?) -> Void) {
+        taskForGETRequest(url: Endpoints.getLocations.url, responseType: StudentLocationResults.self) { (response, error) in
+            if let response = response {
+                completion(response.results, nil)
+                print(response)
+            }else{
+                completion([], error)
+            }
         }
     }
     
