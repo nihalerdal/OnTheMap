@@ -78,9 +78,7 @@
 			children = (
 				953D5F1326607D76000E7A54 /* AppDelegate.swift */,
 				953D5F1526607D76000E7A54 /* SceneDelegate.swift */,
-				953D5F382666EE6F000E7A54 /* UdacityClient */,
-				953D5F392666F0B5000E7A54 /* Requests */,
-				953D5F3A2666F0CE000E7A54 /* Responses */,
+				953D5F432669BA7E000E7A54 /* Model */,
 				953D5F2826607E97000E7A54 /* View Controller */,
 				953D5F2726607DC1000E7A54 /* Assets */,
 				953D5F2126607D7B000E7A54 /* Info.plist */,
@@ -143,6 +141,16 @@
 				953D5F4126686AA6000E7A54 /* StudentLocationResults.swift */,
 			);
 			path = Responses;
+			sourceTree = "<group>";
+		};
+		953D5F432669BA7E000E7A54 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				953D5F382666EE6F000E7A54 /* UdacityClient */,
+				953D5F392666F0B5000E7A54 /* Requests */,
+				953D5F3A2666F0CE000E7A54 /* Responses */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

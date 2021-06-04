@@ -7,6 +7,12 @@
 
 import Foundation
 
-struct StudentLocationResults: Codable {
+class StudentLocationResults: Codable {
     let results: [StudentLocation]
+    
+    init(results: [StudentLocation]){
+        self.results = results
+        
+    }
+    
 }
