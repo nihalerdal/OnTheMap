@@ -20,6 +20,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 //        data that you can download from parse.
         UdacityClient.getStudentLocations { studentlocationresults, error in
             self.students = studentlocationresults
+            print(self.students)
         }
         
 //        The point annotations will be stored in this array, and then provided to the map view.
@@ -70,6 +71,17 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         return pinView
     }
     
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if control == view.rightCalloutAccessoryView{
+            let app = UIApplication.shared
+            if let toOpen = view.annotation?.subtitle!{
+                app.canOpenURL(URL(string: toOpen)!)
+            }
+            
+        }
+        
+    }
     
     
     
