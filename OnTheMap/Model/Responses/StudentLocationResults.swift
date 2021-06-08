@@ -7,7 +7,7 @@
 
 import Foundation
 
-class StudentLocationResults: Codable {
+struct StudentLocationResults: Codable {
     let results: [StudentLocation]
     
     init(results: [StudentLocation]){

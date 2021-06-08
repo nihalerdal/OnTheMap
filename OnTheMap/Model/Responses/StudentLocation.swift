@@ -17,11 +17,11 @@ struct StudentLocation: Codable {
     let mediaURL: String
     let latitude: Double
     let longitude: Double
-    let createdAt: Date
-    let updatedAt: Date
+    let createdAt: String
+    let updatedAt: String
     let ACL: String?
     
-    init(objectId: String, uniqueKey: String?, firstName: String, lastName: String, mapString: String, mediaURL: String, latitude: Double, longitude: Double, createdAt: Date, updatedAt: Date, ACL: String?){
+    init(objectId: String, uniqueKey: String?, firstName: String, lastName: String, mapString: String, mediaURL: String, latitude: Double, longitude: Double, createdAt: String, updatedAt: String, ACL: String?){
         self.objectId = objectId
         self.uniqueKey = uniqueKey
         self.firstName = firstName
