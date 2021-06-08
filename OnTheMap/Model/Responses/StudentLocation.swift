@@ -19,9 +19,9 @@ struct StudentLocation: Codable {
     let longitude: Double
     let createdAt: Date
     let updatedAt: Date
-    let ACL: String
+    let ACL: String?
     
-    init(objectId: String, uniqueKey: String?, firstName: String, lastName: String, mapString: String, mediaURL: String, latitude: Double, longitude: Double, createdAt: Date, updatedAt: Date, ACL: String){
+    init(objectId: String, uniqueKey: String?, firstName: String, lastName: String, mapString: String, mediaURL: String, latitude: Double, longitude: Double, createdAt: Date, updatedAt: Date, ACL: String?){
         self.objectId = objectId
         self.uniqueKey = uniqueKey
         self.firstName = firstName
