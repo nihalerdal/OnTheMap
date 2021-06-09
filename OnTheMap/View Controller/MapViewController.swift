@@ -21,33 +21,33 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         UdacityClient.getStudentLocations { studentlocationresults, error in
             self.students = studentlocationresults
             
+            
+            
+            //        The point annotations will be stored in this array, and then provided to the map view.
+            var annotations = [MKPointAnnotation]()
+            
+            // The "student" array is loaded with the sample data below. We are using the dictionaries
+            // to create map annotations. This would be more stylish if the dictionaries were being
+            // used to create custom structs. Perhaps StudentLocation structs.
+            for student in self.students {
+                
+                let lat = CLLocationDegrees(student.latitude )
+                let long = CLLocationDegrees(student.longitude)
+                
+                // Here we create the annotation and set its coordiate, title, and subtitle properties
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = CLLocationCoordinate2D( latitude:lat, longitude: long)
+                annotation.title = "\(student.firstName)" + "" + "\(student.lastName)"
+                annotation.subtitle = student.mediaURL
+                
+                // Finally we place the annotation in an array of annotations.
+                annotations.append(annotation)
+                self.mapView.addAnnotation(annotation)
+            }
         }
+        //        When the array is complete, we add the annotations to the map.
         
-//        The point annotations will be stored in this array, and then provided to the map view.
-        var annotations = [MKPointAnnotation]()
-        
-        // The "student" array is loaded with the sample data below. We are using the dictionaries
-        // to create map annotations. This would be more stylish if the dictionaries were being
-        // used to create custom structs. Perhaps StudentLocation structs.
-        for student in students {
-            
-            let lat = CLLocationDegrees(student.latitude )
-            let long = CLLocationDegrees(student.longitude)
-            
-            // Here we create the annotation and set its coordiate, title, and subtitle properties
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = CLLocationCoordinate2D( latitude:lat, longitude: long)
-            annotation.title = "\(student.firstName)" + "" + "\(student.lastName)"
-            annotation.subtitle = student.mediaURL
-            
-            // Finally we place the annotation in an array of annotations.
-            annotations.append(annotation)
-            self.mapView.addAnnotation(annotation)
-        }
-        
-//        When the array is complete, we add the annotations to the map.
-
-//        self.mapView.addAnnotation(annotations)
+        //        self.mapView.addAnnotation(annotations)
     }
     
     // MARK: - MKMapViewDelegate
@@ -58,10 +58,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let reuseId = "pin"
         
-        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
         
         if  pinView == nil {
-            pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView?.canShowCallout = true
             pinView?.tintColor = .red
             pinView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
@@ -70,6 +70,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
         return pinView
     }
+    
     
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
