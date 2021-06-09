@@ -7,4 +7,12 @@
 
 import Foundation
 
-
+struct PostLocation: Codable {
+    let uniqueKey: String
+    let firstName: String
+    let lastName: String
+    let mapString: String
+    let mediaURL: String
+    let latitude: String
+    let longitude: String
+}
