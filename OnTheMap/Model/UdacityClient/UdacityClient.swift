@@ -118,6 +118,22 @@ class UdacityClient {
         }
     }
     
+    
+    class func postLocation(firstName: String, lastName: String, mapString: String, mediaURL: String, latitude: String, longitude: String, completion: @escaping (Bool, Error?)-> Void){
+        
+        let body = PostLocation(uniqueKey: Auth.accountKey, firstName: firstName, lastName: lastName, mapString: mapString, mediaURL: mediaURL, latitude: latitude, longitude: longitude)
+        
+        taskForPOSTRequest(url: Endpoints.postLocation.url, responseType: PostLocationResponse.self, body: body) { response, error in
+            if let response = response {
+                print(response.createdAt)
+                completion(true, nil)
+            }else{
+                completion(false, error)
+            }
+        }
+    }
+    
+    
     class func login(username:String, password: String, completion: @escaping (Bool, Error?)-> Void ){
         
         var request = URLRequest(url: Endpoints.createSessionId.url)
