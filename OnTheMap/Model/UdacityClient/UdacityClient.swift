@@ -19,12 +19,15 @@ class UdacityClient {
         
         case createSessionId
         case getLocations
+        case postLocation
         
             
         var stringValue: String{
             switch self {
             case .createSessionId: return "https://onthemap-api.udacity.com/v1/session"
             case .getLocations: return "https://onthemap-api.udacity.com/v1/StudentLocation?order=-updatedAt"
+            case .postLocation: return "https://onthemap-api.udacity.com/v1/StudentLocation"
+                
             }
         
         }
@@ -66,6 +69,43 @@ class UdacityClient {
     
     return task
 }
+    
+    class func taskForPOSTRequest<RequestType: Encodable, ResponseType: Decodable > (url:URL, responseType: ResponseType.Type, body: RequestType, completion: @escaping (ResponseType?, Error?) -> Void ){
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try! JSONEncoder().encode(body)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else{
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            
+            let range = (5..<data.count)
+            let newData = data.subdata(in: range)
+            print(String(data: newData, encoding: .utf8)!)
+            
+            do {
+        
+                let responseObject = try JSONDecoder().decode(ResponseType.self, from: data)
+                DispatchQueue.main.async {
+                    completion(responseObject, nil)
+                }
+                
+            } catch {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+            }
+        }
+        
+        task.resume()
+}
+    
     
     class func getStudentLocations(completion: @escaping ([StudentLocation], Error?) -> Void) {
         taskForGETRequest(url: Endpoints.getLocations.url, responseType: StudentLocationResults.self) { (response, error) in
