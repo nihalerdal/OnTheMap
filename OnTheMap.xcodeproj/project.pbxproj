@@ -25,6 +25,7 @@
 		953D5F4226686AA6000E7A54 /* StudentLocationResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D5F4126686AA6000E7A54 /* StudentLocationResults.swift */; };
 		953D5F4526704DCF000E7A54 /* PostLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D5F4426704DCF000E7A54 /* PostLocation.swift */; };
 		953D5F4726705AA6000E7A54 /* PostLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D5F4626705AA6000E7A54 /* PostLocationResponse.swift */; };
+		953D5F4926719EB0000E7A54 /* GetUserDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D5F4826719EB0000E7A54 /* GetUserDataResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		953D5F4126686AA6000E7A54 /* StudentLocationResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocationResults.swift; sourceTree = "<group>"; };
 		953D5F4426704DCF000E7A54 /* PostLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLocation.swift; sourceTree = "<group>"; };
 		953D5F4626705AA6000E7A54 /* PostLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLocationResponse.swift; sourceTree = "<group>"; };
+		953D5F4826719EB0000E7A54 /* GetUserDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserDataResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				953D5F3D2666F621000E7A54 /* LoginResponse.swift */,
 				953D5F3F2668435A000E7A54 /* StudentLocation.swift */,
 				953D5F4126686AA6000E7A54 /* StudentLocationResults.swift */,
+				953D5F4826719EB0000E7A54 /* GetUserDataResponse.swift */,
 				953D5F4626705AA6000E7A54 /* PostLocationResponse.swift */,
 			);
 			path = Responses;
@@ -241,6 +244,7 @@
 				953D5F2E2661BCC8000E7A54 /* ListViewController.swift in Sources */,
 				953D5F2C2661BCA6000E7A54 /* MapViewController.swift in Sources */,
 				953D5F322661BD0D000E7A54 /* FindLocationViewController.swift in Sources */,
+				953D5F4926719EB0000E7A54 /* GetUserDataResponse.swift in Sources */,
 				953D5F3E2666F621000E7A54 /* LoginResponse.swift in Sources */,
 				953D5F372666EE66000E7A54 /* UdacityClient.swift in Sources */,
 				953D5F4726705AA6000E7A54 /* PostLocationResponse.swift in Sources */,

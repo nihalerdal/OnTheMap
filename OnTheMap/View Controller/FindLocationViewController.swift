@@ -12,6 +12,11 @@ class FindLocationViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
+    var link : String = ""
+    var location : String = ""
+    var latitude: String = "0.00"
+    var longitude: String = "0.00"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,9 +25,22 @@ class FindLocationViewController: UIViewController, MKMapViewDelegate {
     
 
     @IBAction func finishTapped(_ sender: Any) {
+        UdacityClient.getUserData(completion: handleGetUserData(firstName:lastName:error:))
+  
     }
     
+    func handleGetUserData(firstName: String?, lastName: String?, error: Error?){
+        if error == nil{
+            UdacityClient.postLocation(firstName: firstName ?? "", lastName: lastName ?? "", mapString: location, mediaURL: link, latitude: latitude, longitude: longitude, completion: handlePostLocation(success:error:))
+        }
+        }
     
+    
+    func handlePostLocation(success: Bool, error: Error?){
+        if success {
+            dismiss(animated: true, completion: nil)
+        }
+    }
     /*
     // MARK: - Navigation
 

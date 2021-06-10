@@ -20,6 +20,7 @@ class UdacityClient {
         case createSessionId
         case getLocations
         case postLocation
+        case getUserData
         
             
         var stringValue: String{
@@ -27,6 +28,7 @@ class UdacityClient {
             case .createSessionId: return "https://onthemap-api.udacity.com/v1/session"
             case .getLocations: return "https://onthemap-api.udacity.com/v1/StudentLocation?order=-updatedAt"
             case .postLocation: return "https://onthemap-api.udacity.com/v1/StudentLocation"
+            case .getUserData: return "https://onthemap-api.udacity.com/v1/users/\(Auth.accountKey)"
                 
             }
         
@@ -106,6 +108,17 @@ class UdacityClient {
         task.resume()
 }
     
+    class func getUserData(completion: @escaping (String?, String?, Error?)-> Void){
+        taskForGETRequest(url: Endpoints.getUserData.url, responseType: GetUserDataResponse.self) { response, error in
+            if let response = response {
+                print("Getting user data was completed")
+                completion(response.firstName, response.lastName, nil)
+                print(response)
+            }else{
+                completion(nil, nil, error)
+            }
+        }
+    }
     
     class func getStudentLocations(completion: @escaping ([StudentLocation], Error?) -> Void) {
         taskForGETRequest(url: Endpoints.getLocations.url, responseType: StudentLocationResults.self) { (response, error) in
@@ -168,11 +181,6 @@ class UdacityClient {
                 }
                
             }
-            
-//            let range = (5..<data.count)
-//            let newData = data.subdata(in: range) /* subset response data! */
-//            print(String(data: newData, encoding: .utf8)!)
-//            completion(true, nil)
         }
         task.resume()
     }
