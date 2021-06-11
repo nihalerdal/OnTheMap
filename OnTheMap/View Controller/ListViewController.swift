@@ -7,20 +7,30 @@
 
 import UIKit
 
-class ListViewController: UIViewController, UITableViewDelegate {
+class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+    var students = [StudentLocation]()
 
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        
+        UdacityClient.getStudentLocations { studentlocationresults, error in
+            self.students = studentlocationresults
+            self.tableView.reloadData()
+        }
     }
     
     @IBAction func addLocation(_ sender: Any) {
     }
     
     @IBAction func refresh(_ sender: Any) {
+        tableView.reloadData()
     }
     
     
@@ -28,6 +38,23 @@ class ListViewController: UIViewController, UITableViewDelegate {
     }
     
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        students.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath) as? LocationTableViewCell else {
+            fatalError("error")
+            
+        }
+            let student = students[indexPath.row]
+            cell.textLabel?.text = "\(student.firstName)" + " " + "\(student.lastName)"
+            cell.detailTextLabel?.text = "\(student.mediaURL)"
+        
+       return cell
+    }
     /*
     // MARK: - Navigation
 
