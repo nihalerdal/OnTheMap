@@ -9,6 +9,7 @@ import UIKit
 
 class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var refreshButton: UIBarButtonItem!
     var students = [StudentLocation]()
 
     @IBOutlet weak var tableView: UITableView!
@@ -30,7 +31,13 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func refresh(_ sender: Any) {
-        tableView.reloadData()
+        
+        refreshButton.isEnabled = false
+        UdacityClient.getStudentLocations { studentlocationresults, error in
+            self.students = studentlocationresults
+            self.tableView.reloadData()
+        }
+        refreshButton.isEnabled = true
     }
     
     

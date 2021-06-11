@@ -224,6 +224,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="refreshButton" destination="fqn-4W-GGp" id="8oq-f6-yhw"/>
                         <outlet property="tableView" destination="bvW-Qc-ATJ" id="uwB-TK-YTQ"/>
                     </connections>
                 </viewController>
