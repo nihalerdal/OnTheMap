@@ -21,6 +21,12 @@ class AddLocationViewController: UIViewController {
     
 
     @IBAction func findLocationTapped(_ sender: Any) {
+        if locationTextField.text == "" || linkTextField.text == "" {
+            showAlert()
+        }else {
+            guard let location = locationTextField.text else {return}
+            findGeocode("\(location)")
+        }
     }
     
     
@@ -45,9 +51,16 @@ class AddLocationViewController: UIViewController {
                 fatalError("geocode error")
             }
         }
+        performSegue(withIdentifier: "FindLocationSegue", sender: nil)
         
     }
 
+    func showAlert(){
+        let alert = UIAlertController(title: "Required Fields!", message: "You must provide location and url.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+    }
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == "FindLocationSegue"{
