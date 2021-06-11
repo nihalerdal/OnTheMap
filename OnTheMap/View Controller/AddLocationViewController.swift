@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import MapKit
 
 class AddLocationViewController: UIViewController {
 
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var linkTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,6 +26,37 @@ class AddLocationViewController: UIViewController {
     
     @IBAction func cancel(_ sender: Any) {
     }
+    
+    
+    func findGeocode(_ address: String){
+        CLGeocoder().geocodeAddressString(address) { (placemark, error)
+            in
+            if error == nil {
+                
+                if let placemark = placemark?.first,
+                   let location = placemark.location {
+                    let latitude = location.coordinate.latitude
+                    let longitude = location.coordinate.longitude
+                    
+                    print("Latitude:\(latitude), Longitude:\(longitude)")
+                    
+                }
+            }else {
+                fatalError("geocode error")
+            }
+        }
+        
+    }
+
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "FindLocationSegue"{
+//            if let mapVC = segue.destination as? FindLocationViewController{
+//                let
+//            }
+//
+//        }
+//    }
     /*
     // MARK: - Navigation
 
