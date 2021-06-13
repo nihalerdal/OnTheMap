@@ -20,7 +20,7 @@ class FindLocationViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        createMapAnnotation()
     }
     
 
@@ -40,6 +40,33 @@ class FindLocationViewController: UIViewController, MKMapViewDelegate {
         if success {
             dismiss(animated: true, completion: nil)
         }
+    }
+    
+    func createMapAnnotation(){
+        let annotation = MKPointAnnotation()
+        annotation.coordinate.latitude = self.latitude
+        annotation.coordinate.longitude = self.longitude
+        annotation.title = location
+        self.mapView.addAnnotation(annotation)
+        
+        self.mapView.setCenter(annotation.coordinate, animated: true) //--> to place pin the center of the mapView
+        let region = MKCoordinateRegion(center: annotation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)) //-> create geographical region display. binalar, parklar vs.
+        self.mapView.setRegion(region, animated: true)
+    }
+    
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let reuseId = "pin"
+        
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+
+        if  pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView?.canShowCallout = true
+        }else{
+            pinView?.annotation = annotation
+        }
+        return pinView
     }
     /*
     // MARK: - Navigation
