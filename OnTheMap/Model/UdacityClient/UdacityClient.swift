@@ -132,7 +132,7 @@ class UdacityClient {
     }
     
     
-    class func postLocation(firstName: String, lastName: String, mapString: String, mediaURL: String, latitude: String, longitude: String, completion: @escaping (Bool, Error?)-> Void){
+    class func postLocation(firstName: String, lastName: String, mapString: String, mediaURL: String, latitude: Double, longitude: Double, completion: @escaping (Bool, Error?)-> Void){
         
         let body = PostLocation(uniqueKey: Auth.accountKey, firstName: firstName, lastName: lastName, mapString: mapString, mediaURL: mediaURL, latitude: latitude, longitude: longitude)
         

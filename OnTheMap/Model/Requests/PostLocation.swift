@@ -13,6 +13,6 @@ struct PostLocation: Codable {
     let lastName: String
     let mapString: String
     let mediaURL: String
-    let latitude: String
-    let longitude: String
+    let latitude: Double
+    let longitude: Double
 }

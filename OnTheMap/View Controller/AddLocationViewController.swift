@@ -12,6 +12,8 @@ class AddLocationViewController: UIViewController {
 
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var linkTextField: UITextField!
+    var latitude : Double = 0.0
+    var longitude : Double = 0.0 // -> (CLLocationCoordinate2D(latitude:Double, logitude: Double))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,27 +36,27 @@ class AddLocationViewController: UIViewController {
     }
     
     
-    func findGeocode(_ address: String){
+    func findGeocode(_ address: String) {
         CLGeocoder().geocodeAddressString(address) { (placemark, error)
             in
             if error == nil {
                 
                 if let placemark = placemark?.first,
                    let location = placemark.location {
-                    let latitude = location.coordinate.latitude
-                    let longitude = location.coordinate.longitude
+                    self.latitude = location.coordinate.latitude
+                    self.longitude = location.coordinate.longitude
                     
-                    print("Latitude:\(latitude), Longitude:\(longitude)")
-                    
+                    print("Latitude:\(self.latitude), Longitude:\(self.longitude)")
+                
+                    self.performSegue(withIdentifier: "FindLocationSegue", sender: nil)
                 }
+                
             }else {
                 fatalError("geocode error")
             }
         }
-        performSegue(withIdentifier: "FindLocationSegue", sender: nil)
-        
     }
-
+    
     func showAlert(){
         let alert = UIAlertController(title: "Required Fields!", message: "You must provide location and url.", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -62,14 +64,17 @@ class AddLocationViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "FindLocationSegue"{
-//            if let mapVC = segue.destination as? FindLocationViewController{
-//                let
-//            }
-//
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "FindLocationSegue"{
+            if let mapVC = segue.destination as? FindLocationViewController{
+                mapVC.link = linkTextField.text ?? ""
+                mapVC.location = locationTextField.text ?? ""
+                mapVC.latitude = latitude
+                mapVC.longitude = longitude
+            }
+            
+        }
+    }
     /*
     // MARK: - Navigation
 

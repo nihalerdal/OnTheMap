@@ -14,8 +14,8 @@ class FindLocationViewController: UIViewController, MKMapViewDelegate {
     
     var link : String = ""
     var location : String = ""
-    var latitude: String = "0.00"
-    var longitude: String = "0.00"
+    var latitude : Double = 0.0
+    var longitude: Double = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +33,7 @@ class FindLocationViewController: UIViewController, MKMapViewDelegate {
         if error == nil{
             UdacityClient.postLocation(firstName: firstName ?? "", lastName: lastName ?? "", mapString: location, mediaURL: link, latitude: latitude, longitude: longitude, completion: handlePostLocation(success:error:))
         }
-        }
+    }
     
     
     func handlePostLocation(success: Bool, error: Error?){
