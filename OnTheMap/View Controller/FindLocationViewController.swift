@@ -11,6 +11,7 @@ import MapKit
 class FindLocationViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var finishButton: UIButton!
     
     var link : String = ""
     var location : String = ""
@@ -26,12 +27,13 @@ class FindLocationViewController: UIViewController, MKMapViewDelegate {
 
     @IBAction func finishTapped(_ sender: Any) {
         UdacityClient.getUserData(completion: handleGetUserData(firstName:lastName:error:))
-  
     }
     
     func handleGetUserData(firstName: String?, lastName: String?, error: Error?){
         if error == nil{
             UdacityClient.postLocation(firstName: firstName ?? "", lastName: lastName ?? "", mapString: location, mediaURL: link, latitude: latitude, longitude: longitude, completion: handlePostLocation(success:error:))
+        }else{
+            print("user data can not be handled.")
         }
     }
     
@@ -39,6 +41,12 @@ class FindLocationViewController: UIViewController, MKMapViewDelegate {
     func handlePostLocation(success: Bool, error: Error?){
         if success {
             dismiss(animated: true, completion: nil)
+            UdacityClient.User.location = location
+            UdacityClient.User.link = link
+            print("student added")
+            navigationController?.popToRootViewController(animated: true)
+        }else{
+            print("student can not be added.")
         }
     }
     

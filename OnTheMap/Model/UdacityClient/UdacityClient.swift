@@ -9,10 +9,16 @@ import Foundation
 
 class UdacityClient {
     
+    struct User {
+        static var location = ""
+        static var link = ""
+        static var createdAt = ""
+    }
     
-     struct Auth {
-       static var accountKey = ""
+    struct Auth {
+        static var accountKey = ""
         static var sessionId = ""
+        
     }
     
     enum Endpoints {
@@ -49,25 +55,34 @@ class UdacityClient {
                 return
             }
             
-            let range = (5..<data.count)
-            let newData = data.subdata(in: range) /* subset response data! */
-            print(String(data: newData, encoding: .utf8)!)
             let decoder = JSONDecoder()
             do {
-                
                 let responseObject = try decoder.decode(ResponseType.self, from: data)
                 DispatchQueue.main.async {
                     completion(responseObject, nil)
                 }
+                
             } catch {
                 
-                DispatchQueue.main.async {
-                    completion(nil, error)
+                do {
+                    let range = (5..<data.count)
+                    let newData = data.subdata(in: range) /* subset response data! */
+                    print(String(data: newData, encoding: .utf8)!)
+                    
+                    let responseObject = try decoder.decode(ResponseType.self, from: newData)
+                    DispatchQueue.main.async {
+                        completion(responseObject, nil)
+                    }
+                    
+                } catch {
+                    DispatchQueue.main.async {
+                        completion(nil, error)
+                    }
                 }
             }
         }
-    
-    task.resume()
+        
+        task.resume()
     
     return task
 }
@@ -87,20 +102,27 @@ class UdacityClient {
                 return
             }
             
-            let range = (5..<data.count)
-            let newData = data.subdata(in: range)
-            print(String(data: newData, encoding: .utf8)!)
-            
             do {
-        
                 let responseObject = try JSONDecoder().decode(ResponseType.self, from: data)
                 DispatchQueue.main.async {
                     completion(responseObject, nil)
                 }
                 
             } catch {
-                DispatchQueue.main.async {
-                    completion(nil, error)
+                do {
+                    let range = (5..<data.count)
+                    let newData = data.subdata(in: range)
+                    print(String(data: newData, encoding: .utf8)!)
+                    
+                    let responseObject = try JSONDecoder().decode(ResponseType.self, from: newData)
+                    DispatchQueue.main.async {
+                        completion(responseObject, nil)
+                    }
+                    
+                } catch {
+                    DispatchQueue.main.async {
+                        completion(nil, error)
+                    }
                 }
             }
         }
@@ -138,6 +160,7 @@ class UdacityClient {
         
         taskForPOSTRequest(url: Endpoints.postLocation.url, responseType: PostLocationResponse.self, body: body) { response, error in
             if let response = response {
+                User.createdAt = response.createdAt
                 print(response.createdAt)
                 completion(true, nil)
             }else{

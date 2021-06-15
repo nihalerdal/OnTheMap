@@ -37,7 +37,7 @@
                             <barButtonItem systemItem="add" id="swW-if-X9m">
                                 <connections>
                                     <action selector="addLocation:" destination="v2C-DG-5du" id="H4p-hS-PTh"/>
-                                    <segue destination="CBj-ri-fiR" kind="show" id="wKj-KY-zi6"/>
+                                    <segue destination="CBj-ri-fiR" kind="show" identifier="AddStudentFromMapView" id="wKj-KY-zi6"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="refresh" id="WVS-Mk-TcP">
@@ -145,6 +145,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Add Location" id="q6t-Tv-QLB"/>
                     <connections>
+                        <outlet property="finishButton" destination="vhg-NT-ukc" id="dRX-Rb-dHA"/>
                         <outlet property="mapView" destination="HGb-ij-qqK" id="jV4-r4-mBa"/>
                     </connections>
                 </viewController>
@@ -399,7 +400,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="tpy-Zd-A2C"/>
+        <segue reference="wKj-KY-zi6"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Screen Shot 2021-05-27 at 6.40.58 PM-1" width="348" height="313"/>
