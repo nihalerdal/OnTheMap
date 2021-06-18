@@ -43,7 +43,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                     // Here we create the annotation and set its coordiate, title, and subtitle properties
                     let annotation = MKPointAnnotation()
                     annotation.coordinate = CLLocationCoordinate2D( latitude:lat, longitude: long)
-                    annotation.title = "\(student.firstName)" + "" + "\(student.lastName)"
+                    annotation.title = "\(student.firstName)" + " " + "\(student.lastName)"
                     annotation.subtitle = student.mediaURL
                     
                     // Finally we place the annotation in an array of annotations.
@@ -91,10 +91,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func showAlert(){
         let alert = UIAlertController(title: "Warning", message: "You have already posted a student location.Would you like to overwrite your current location?", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Overwrite", style: .default) { action in
-            if let vc = self.storyboard?.instantiateViewController(identifier: "AddStudentFromMapView") as? AddLocationViewController { // -- performsegue de ayni sekilde calisir mi ? yoksa baslangic noktasi farkli diye sacmalar mi segue ile buranin tetikleyicisi -> + butonundan segue yi kaldirdim yoksa if i gormedi.  
+            if let vc = self.storyboard?.instantiateViewController(identifier: "AddLocationViewController") as? AddLocationViewController { // -- performsegue de ayni sekilde calisir mi ? yoksa baslangic noktasi farkli diye sacmalar mi segue ile buranin tetikleyicisi -> + butonundan segue yi kaldirdim yoksa if i gormedi.
+//                vc.linkTextField.text = UdacityClient.User.link
+//                vc.locationTextField.text = UdacityClient.User.location
                 self.navigationController?.pushViewController(vc, animated: true)
-                vc.linkTextField.text = UdacityClient.User.link
-                vc.locationTextField.text = UdacityClient.User.location
                 
             }else{
                 fatalError("alert error")

@@ -26,7 +26,11 @@ class FindLocationViewController: UIViewController, MKMapViewDelegate {
     
 
     @IBAction func finishTapped(_ sender: Any) {
-        UdacityClient.getUserData(completion: handleGetUserData(firstName:lastName:error:))
+        if UdacityClient.User.createdAt == "" {
+            UdacityClient.getUserData(completion: handleGetUserData(firstName:lastName:error:))
+        }else {
+            UdacityClient.updateLocation(firstName: UdacityClient.User.firstName, lastName: UdacityClient.User.lastName, mapString: location, mediaURL: link, latitude: latitude, longitude: longitude, completion: handleUpdateLocation(success:error:))
+        }
     }
     
     func handleGetUserData(firstName: String?, lastName: String?, error: Error?){
@@ -42,11 +46,23 @@ class FindLocationViewController: UIViewController, MKMapViewDelegate {
         if success {
             dismiss(animated: true, completion: nil)
             UdacityClient.User.location = location
+            print(UdacityClient.User.location)
             UdacityClient.User.link = link
             print("student added")
             navigationController?.popToRootViewController(animated: true)
         }else{
             print("student can not be added.")
+        }
+    }
+    
+    func handleUpdateLocation(success: Bool, error: Error?){
+        if success{
+            UdacityClient.User.location = location
+            UdacityClient.User.link = link
+            print("student updates")
+            navigationController?.popToRootViewController(animated: true)
+        }else{
+            print("student can not be updated.")
         }
     }
     

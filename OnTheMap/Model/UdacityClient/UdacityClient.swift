@@ -13,6 +13,9 @@ class UdacityClient {
         static var location = ""
         static var link = ""
         static var createdAt = ""
+        static var updatedAt = ""
+        static var firstName = ""
+        static var lastName = ""
     }
     
     struct Auth {
@@ -27,6 +30,7 @@ class UdacityClient {
         case getLocations
         case postLocation
         case getUserData
+        case updateLocation
         
             
         var stringValue: String{
@@ -35,6 +39,7 @@ class UdacityClient {
             case .getLocations: return "https://onthemap-api.udacity.com/v1/StudentLocation?order=-updatedAt"
             case .postLocation: return "https://onthemap-api.udacity.com/v1/StudentLocation"
             case .getUserData: return "https://onthemap-api.udacity.com/v1/users/\(Auth.accountKey)"
+            case .updateLocation: return "https://onthemap-api.udacity.com/v1/StudentLocation/\(Auth.accountKey)"
                 
             }
         
@@ -135,6 +140,8 @@ class UdacityClient {
             if let response = response {
                 print("Getting user data was completed")
                 completion(response.firstName, response.lastName, nil)
+                User.firstName = response.firstName
+                User.lastName = response.lastName
                 print(response)
             }else{
                 completion(nil, nil, error)
@@ -197,15 +204,59 @@ class UdacityClient {
                     Auth.sessionId = responseObject.session.id ?? "no session id"
                     completion(responseObject.account.registered, nil)
                 }
-              
+                
             }catch{
                 DispatchQueue.main.async {
                     completion(false, error)
                 }
-               
             }
         }
         task.resume()
     }
-}
-
+    
+    
+    class func updateLocation(firstName: String, lastName: String, mapString: String, mediaURL: String, latitude: Double, longitude: Double, completion: @escaping (Bool, Error?) -> Void){
+        
+        var request = URLRequest(url: Endpoints.updateLocation.url)
+        request.httpMethod = "PUT"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = "{\"uniqueKey\": \(Auth.accountKey), \"firstName\":\(firstName), \"lastName\": \(lastName),\"mapString\": \(mapString), \"mediaURL\": \(mediaURL),\"latitude\": \(latitude), \"longitude\": \(longitude)}".data(using: .utf8)
+        
+      
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                completion(false, error)
+                return
+            }
+            
+            do {
+                let responseObject = try JSONDecoder().decode(UpdateLocationResponse.self, from: data)
+                DispatchQueue.main.async {
+                    User.updatedAt = responseObject.updatedAt
+                    print("location updated")
+                    completion(true, nil)
+                }
+                
+            } catch {
+                do {
+                    let range = (5..<data.count)
+                    let newData = data.subdata(in: range) /* subset response data! */
+                    print(String(data: newData, encoding: .utf8)!)
+                    let responseObject = try JSONDecoder().decode(UpdateLocationResponse.self, from: newData)
+                    DispatchQueue.main.async {
+                        User.updatedAt = responseObject.updatedAt
+                        print("location updated")
+                        completion(true, nil)
+                    }
+                }catch{
+                    DispatchQueue.main.async {
+                        completion(false, error)
+                    }
+                }
+            }
+        }
+                task.resume()
+            
+        }
+        
+    }

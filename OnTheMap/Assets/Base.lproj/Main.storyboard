@@ -58,7 +58,7 @@
         <!--Add Location-->
         <scene sceneID="3zE-oF-c1P">
             <objects>
-                <viewController id="CBj-ri-fiR" customClass="AddLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddLocationViewController" id="CBj-ri-fiR" customClass="AddLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Dpu-KO-uOy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -400,7 +400,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="o8Y-2L-9La"/>
+        <segue reference="IqM-2s-1Uf"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Screen Shot 2021-05-27 at 6.40.58 PM-1" width="348" height="313"/>
