@@ -193,8 +193,8 @@ class UdacityClient {
                 print(String(data: newData, encoding: .utf8)!)
                 let responseObject = try JSONDecoder().decode(LoginResponse.self, from: newData)
                 DispatchQueue.main.async {
-                    Auth.accountKey = responseObject.account.key ?? ""
-                    Auth.sessionId = responseObject.session.id ?? ""
+                    Auth.accountKey = responseObject.account.key ?? "no account key"
+                    Auth.sessionId = responseObject.session.id ?? "no session id"
                     completion(responseObject.account.registered, nil)
                 }
               
