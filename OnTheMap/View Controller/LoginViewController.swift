@@ -23,7 +23,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func logIn(_ sender: Any) {
         UdacityClient.login(username: emailTextField.text ?? "", password: passwordTextField.text ?? "", completion: handleLoginResponse(success:error:))
-        }
+    }
     
     
     func handleLoginResponse(success: Bool, error: Error?){

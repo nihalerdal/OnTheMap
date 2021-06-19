@@ -316,7 +316,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="logIn:" destination="uka-3v-DNb" eventType="touchUpInside" id="4nq-dm-bJa"/>
-                                                    <segue destination="VL7-kk-hSH" kind="show" identifier="tabBarSegue" id="Wen-Cf-8fR"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -372,6 +371,7 @@
                         <outlet property="loginButton" destination="cEA-wX-pBT" id="wUR-d5-W2P"/>
                         <outlet property="passwordTextField" destination="lTd-fn-UIK" id="WoX-YQ-Che"/>
                         <outlet property="signUpButton" destination="FRU-as-oq8" id="Rij-8F-BWj"/>
+                        <segue destination="VL7-kk-hSH" kind="show" identifier="tabBarSegue" id="sou-MS-4NZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k2n-X2-ayd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -400,7 +400,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="IqM-2s-1Uf"/>
+        <segue reference="o8Y-2L-9La"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Screen Shot 2021-05-27 at 6.40.58 PM-1" width="348" height="313"/>

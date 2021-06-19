@@ -31,6 +31,7 @@ class UdacityClient {
         case postLocation
         case getUserData
         case updateLocation
+        case logout
         
             
         var stringValue: String{
@@ -40,6 +41,7 @@ class UdacityClient {
             case .postLocation: return "https://onthemap-api.udacity.com/v1/StudentLocation"
             case .getUserData: return "https://onthemap-api.udacity.com/v1/users/\(Auth.accountKey)"
             case .updateLocation: return "https://onthemap-api.udacity.com/v1/StudentLocation/\(Auth.accountKey)"
+            case .logout: return "https://onthemap-api.udacity.com/v1/session"
                 
             }
         
@@ -214,6 +216,49 @@ class UdacityClient {
         task.resume()
     }
     
+    class func logout(completion: @escaping (Bool, Error?) -> Void){
+        
+        var request = URLRequest(url: Endpoints.logout.url)
+        request.httpMethod = "DELETE"
+        var xsrfCookie: HTTPCookie? = nil
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        for cookie in sharedCookieStorage.cookies! {
+          if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        if let xsrfCookie = xsrfCookie {
+          request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(false, error)
+                }
+                return
+            }
+            
+            do{
+                let range = (5..<data.count)
+                let newData = data.subdata(in: range) /* subset response data! */
+                print(String(data: newData, encoding: .utf8)!)
+                
+                _ = try JSONDecoder().decode(Session.self, from: newData)
+                DispatchQueue.main.async {
+                    Auth.sessionId = ""
+                    completion(true, nil)
+                }
+             
+            }catch{
+                completion(false, error)
+                print("Logout failed.")
+            }
+           
+        }
+        
+        task.resume()
+    }
+
+    
     
     class func updateLocation(firstName: String, lastName: String, mapString: String, mediaURL: String, latitude: Double, longitude: Double, completion: @escaping (Bool, Error?) -> Void){
         
@@ -222,10 +267,12 @@ class UdacityClient {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = "{\"uniqueKey\": \(Auth.accountKey), \"firstName\":\(firstName), \"lastName\": \(lastName),\"mapString\": \(mapString), \"mediaURL\": \(mediaURL),\"latitude\": \(latitude), \"longitude\": \(longitude)}".data(using: .utf8)
         
-      
+        
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else {
-                completion(false, error)
+                DispatchQueue.main.async {
+                    completion(false, error)
+                }
                 return
             }
             
@@ -255,8 +302,8 @@ class UdacityClient {
                 }
             }
         }
-                task.resume()
-            
-        }
+        task.resume()
         
     }
+    
+}
