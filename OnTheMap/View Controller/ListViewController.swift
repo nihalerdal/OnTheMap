@@ -84,7 +84,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     func showAlert(){
         let alert = UIAlertController(title: "Warning", message: "You have already posted a student location.Would you like to overwrite your current location?", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Overwrite", style: .default) { action in
-            if let vc = self.storyboard?.instantiateViewController(identifier: "AddStudentFromMapView") as? AddLocationViewController { // -- performsegue de ayni sekilde calisir mi ? yoksa baslangic noktasi farkli diye sacmalar mi segue ile buranin tetikleyicisi, -> + butonundan segue yi kaldirdim yoksa if i gormedi.  
+            if let vc = self.storyboard?.instantiateViewController(identifier: "AddStudentFromList") as? AddLocationViewController { // -- performsegue de ayni sekilde calisir mi ? yoksa baslangic noktasi farkli diye sacmalar mi segue ile buranin tetikleyicisi, -> + butonundan segue yi kaldirdim yoksa if i gormedi.
                 self.navigationController?.pushViewController(vc, animated: true)
                 vc.linkTextField.text = UdacityClient.User.link
                 vc.locationTextField.text = UdacityClient.User.location

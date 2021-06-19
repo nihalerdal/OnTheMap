@@ -53,7 +53,11 @@ class FindLocationViewController: UIViewController, MKMapViewDelegate {
             print("student added")
             navigationController?.popToRootViewController(animated: true)
         }else{
-            print("student can not be added.")
+            let alert = UIAlertController(title: "Error", message: "Student could not added. Try again", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            print("student could not be added.")
         }
     }
     
