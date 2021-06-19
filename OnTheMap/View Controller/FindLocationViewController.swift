@@ -22,6 +22,8 @@ class FindLocationViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
 
         createMapAnnotation()
+        tabBarController?.tabBar.isHidden = true
+
     }
     
 

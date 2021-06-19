@@ -15,10 +15,11 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var signUpButton: UIButton!
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        emailTextField.text = ""
+        passwordTextField.text = ""
     }
     
     @IBAction func logIn(_ sender: Any) {

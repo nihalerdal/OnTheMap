@@ -22,6 +22,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         showPins()
+        tabBarController?.tabBar.isHidden = false
     }
     
     func showPins(){
@@ -128,7 +129,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             }else {
                 DispatchQueue.main.async {
                     let alert = UIAlertController(title: "Failed", message: "Could not log out. Try again", preferredStyle: .alert)
-                    let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    let action = UIAlertAction(title: "OK", style: .default, handler: nil)
                     alert.addAction(action)
                     self.present(alert, animated: true, completion: nil)
                 }

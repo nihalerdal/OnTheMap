@@ -17,6 +17,8 @@ class AddLocationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tabBarController?.tabBar.isHidden = true
 
     }
     
@@ -32,6 +34,7 @@ class AddLocationViewController: UIViewController {
     
     
     @IBAction func cancel(_ sender: Any) {
+        navigationController?.popToRootViewController(animated: true)
     }
     
     
