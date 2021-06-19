@@ -54,7 +54,11 @@ class AddLocationViewController: UIViewController {
                 }
                 
             }else {
-                fatalError("geocode error")
+                let alert = UIAlertController(title: "Error", message: "Geocode could not find. Try again", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+                print("geocode error")
             }
         }
     }

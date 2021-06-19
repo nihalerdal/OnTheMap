@@ -89,7 +89,6 @@
                                 </state>
                                 <connections>
                                     <action selector="findLocationTapped:" destination="CBj-ri-fiR" eventType="touchUpInside" id="Erl-AM-fjZ"/>
-                                    <segue destination="HuI-R3-Wc7" kind="show" identifier="FindLocationSegue" id="BEJ-Af-vM1"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -106,6 +105,7 @@
                     <connections>
                         <outlet property="linkTextField" destination="Ooy-c2-Yhw" id="CBj-yd-yzt"/>
                         <outlet property="locationTextField" destination="Utq-JZ-ScD" id="2x9-xd-aLd"/>
+                        <segue destination="HuI-R3-Wc7" kind="show" identifier="FindLocationSegue" id="yBl-AG-B64"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4BY-s7-l2e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
