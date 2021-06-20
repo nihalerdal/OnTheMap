@@ -83,6 +83,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             let app = UIApplication.shared
             if let toOpen = view.annotation?.subtitle!{
                 app.canOpenURL(URL(string: toOpen)!)
+                app.open(URL(string: toOpen)!)
             }
             
         }
