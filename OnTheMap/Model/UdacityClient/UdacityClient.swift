@@ -32,6 +32,7 @@ class UdacityClient {
         case getUserData
         case updateLocation
         case logout
+        case webAuth
         
             
         var stringValue: String{
@@ -42,6 +43,7 @@ class UdacityClient {
             case .getUserData: return "https://onthemap-api.udacity.com/v1/users/\(Auth.accountKey)"
             case .updateLocation: return "https://onthemap-api.udacity.com/v1/StudentLocation/\(Auth.accountKey)"
             case .logout: return "https://onthemap-api.udacity.com/v1/session"
+            case .webAuth: return "https://auth.udacity.com/sign-up"
                 
             }
         
