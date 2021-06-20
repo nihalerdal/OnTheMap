@@ -81,6 +81,17 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
        return cell
     }
     
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let student = students[indexPath.row]
+        guard let url = URL(string: student.mediaURL) else {return}
+        
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        
+    }
+    
+    
     func showAlert(){
         let alert = UIAlertController(title: "Warning", message: "You have already posted a student location.Would you like to overwrite your current location?", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Overwrite", style: .default) { action in
