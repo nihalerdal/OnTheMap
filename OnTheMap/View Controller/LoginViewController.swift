@@ -28,8 +28,19 @@ class LoginViewController: UIViewController {
         unsubscribeFromKeyboardNotifications()
     }
     
-    @IBAction func logIn(_ sender: Any) {
-        UdacityClient.login(username: emailTextField.text ?? "", password: passwordTextField.text ?? "", completion: handleLoginResponse(success:error:))
+    @IBAction func logIn(_ sender: UIButton) {
+        
+        if (emailTextField.text?.isEmpty)! || (passwordTextField.text?.isEmpty)! {
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Required fields!", message: "Please fill both email and password", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+                
+            }
+        }else {
+                UdacityClient.login(username: emailTextField.text ?? "", password: passwordTextField.text ?? "", completion: handleLoginResponse(success:error:))
+            }
     }
     
     
@@ -49,7 +60,6 @@ class LoginViewController: UIViewController {
         UIApplication.shared.open(UdacityClient.Endpoints.webAuth.url, options: [:], completionHandler: nil)
     }
     
-
     
     func showLoginFailure(message: String){
         let alertVC = UIAlertController(title: "Login Failed", message: message, preferredStyle: .alert)
