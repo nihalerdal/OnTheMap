@@ -34,8 +34,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        emailTextField.text = ""
-        passwordTextField.text = ""
         setupTextField()
         subscribeToKeyboardNotifications()
         navigationController?.navigationBar.isHidden = true

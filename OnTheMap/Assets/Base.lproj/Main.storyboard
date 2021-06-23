@@ -418,7 +418,7 @@
                         <outlet property="loginButton" destination="cEA-wX-pBT" id="wUR-d5-W2P"/>
                         <outlet property="passwordTextField" destination="lTd-fn-UIK" id="WoX-YQ-Che"/>
                         <outlet property="signUpButton" destination="FRU-as-oq8" id="Rij-8F-BWj"/>
-                        <segue destination="VL7-kk-hSH" kind="show" identifier="tabBarSegue" id="sou-MS-4NZ"/>
+                        <segue destination="VL7-kk-hSH" kind="presentation" identifier="tabBarSegue" id="sou-MS-4NZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k2n-X2-ayd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
