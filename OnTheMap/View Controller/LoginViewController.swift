@@ -7,13 +7,27 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     
+    override func viewDidLoad() {
+        
+        emailTextField.text = ""
+        passwordTextField.text = ""
+        setupTextField()
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+
+    }
+    
+    func setupTextField() {
+        emailTextField.textColor = .black
+        passwordTextField.textColor = .black
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -22,6 +36,7 @@ class LoginViewController: UIViewController {
         passwordTextField.text = ""
         
         subscribeToKeyboardNotifications()
+        setupTextField()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -67,6 +82,21 @@ class LoginViewController: UIViewController {
         show(alertVC, sender: nil)
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let nextTag = textField.tag + 1
+
+        if let nextResponder = textField.superview?.viewWithTag(nextTag) {
+            nextResponder.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+            textField.text = ""
+        }
     
     func subscribeToKeyboardNotifications() {
         
@@ -87,7 +117,7 @@ class LoginViewController: UIViewController {
 
     @objc func keyboardWillShow(_ notification:Notification) {
         
-        if passwordTextField.isEditing || emailTextField.isEditing { //-> only for buttom text
+        if passwordTextField.isEditing || emailTextField.isEditing {
             view.frame.origin.y -= getKeyboardHeight(notification)
         }
     }
