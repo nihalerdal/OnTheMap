@@ -2,7 +2,7 @@
 //  UpdateLocationResponse.swift
 //  OnTheMap
 //
-//  Created by Nihal Erdal on 6/17/21.
+//  Created by Nihal Erdal on 6/23/21.
 //
 
 import Foundation
