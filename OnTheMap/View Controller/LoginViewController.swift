@@ -21,7 +21,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         setupTextField()
         emailTextField.delegate = self
         passwordTextField.delegate = self
-
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor : UIColor.gray])
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor : UIColor.gray])
     }
     
     func setupTextField() {
