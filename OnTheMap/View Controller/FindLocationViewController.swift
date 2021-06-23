@@ -51,7 +51,8 @@ class FindLocationViewController: UIViewController, MKMapViewDelegate {
             print(UdacityClient.User.location)
             UdacityClient.User.link = link
             print("student added")
-            navigationController?.popToRootViewController(animated: true)
+            dismiss(animated: true, completion: nil)
+//            navigationController?.popToRootViewController(animated: true)
         }else{
             let alert = UIAlertController(title: "Error", message: "Student could not added. Try again", preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .default, handler: nil)

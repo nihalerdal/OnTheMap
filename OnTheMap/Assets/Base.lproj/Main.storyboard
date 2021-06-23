@@ -48,7 +48,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="vTK-He-vuJ" id="FhC-4P-apt"/>
-                        <segue destination="CBj-ri-fiR" kind="show" identifier="AddStudentFromMapView" id="IqM-2s-1Uf"/>
+                        <segue destination="CBj-ri-fiR" kind="push" identifier="AddStudentFromMapView" id="IqM-2s-1Uf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Y3-5M-fe4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -58,7 +58,7 @@
         <!--Add Location-->
         <scene sceneID="3zE-oF-c1P">
             <objects>
-                <viewController storyboardIdentifier="AddLocationViewController" id="CBj-ri-fiR" customClass="AddLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddLocationViewController" modalPresentationStyle="fullScreen" id="CBj-ri-fiR" customClass="AddLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Dpu-KO-uOy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -131,7 +131,7 @@
                     <connections>
                         <outlet property="linkTextField" destination="Ooy-c2-Yhw" id="CBj-yd-yzt"/>
                         <outlet property="locationTextField" destination="Utq-JZ-ScD" id="2x9-xd-aLd"/>
-                        <segue destination="HuI-R3-Wc7" kind="show" identifier="FindLocationSegue" id="yBl-AG-B64"/>
+                        <segue destination="HuI-R3-Wc7" kind="push" identifier="FindLocationSegue" id="yBl-AG-B64"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4BY-s7-l2e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -141,20 +141,23 @@
         <!--Add Location-->
         <scene sceneID="Zyn-xa-HDn">
             <objects>
-                <viewController id="HuI-R3-Wc7" customClass="FindLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="HuI-R3-Wc7" customClass="FindLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OtU-My-lvI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="HGb-ij-qqK">
-                                <rect key="frame" x="0.0" y="56" width="414" height="703"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="629"/>
                                 <connections>
                                     <outlet property="delegate" destination="HuI-R3-Wc7" id="yRg-t9-qcg"/>
                                 </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhg-NT-ukc">
-                                <rect key="frame" x="50" y="644" width="314" height="58"/>
+                                <rect key="frame" x="50" y="593" width="314" height="35"/>
                                 <color key="backgroundColor" red="0.46462791650000002" green="0.79326918879999997" blue="0.96620899439999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="53" id="irg-Jj-Ogg"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="FINISH">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -173,7 +176,7 @@
                             <constraint firstAttribute="bottomMargin" secondItem="HGb-ij-qqK" secondAttribute="bottom" constant="-92" id="ac9-C6-cyu"/>
                             <constraint firstItem="HGb-ij-qqK" firstAttribute="top" secondItem="Pzj-TI-oyA" secondAttribute="top" id="hGC-Hp-vMj"/>
                             <constraint firstAttribute="bottomMargin" secondItem="vhg-NT-ukc" secondAttribute="bottom" constant="-35" id="reL-xh-GAs"/>
-                            <constraint firstItem="vhg-NT-ukc" firstAttribute="top" secondItem="Pzj-TI-oyA" secondAttribute="top" constant="588" id="xRU-S9-HUj"/>
+                            <constraint firstItem="vhg-NT-ukc" firstAttribute="top" secondItem="Pzj-TI-oyA" secondAttribute="top" constant="537" id="xRU-S9-HUj"/>
                             <constraint firstItem="vhg-NT-ukc" firstAttribute="centerX" secondItem="HGb-ij-qqK" secondAttribute="centerX" id="yJN-Ke-bto"/>
                         </constraints>
                     </view>
@@ -260,7 +263,7 @@
                     <connections>
                         <outlet property="refreshButton" destination="fqn-4W-GGp" id="8oq-f6-yhw"/>
                         <outlet property="tableView" destination="bvW-Qc-ATJ" id="uwB-TK-YTQ"/>
-                        <segue destination="CBj-ri-fiR" kind="show" identifier="AddStudentFromList" id="o8Y-2L-9La"/>
+                        <segue destination="CBj-ri-fiR" kind="push" identifier="AddStudentFromList" id="o8Y-2L-9La"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fan-7v-NGz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -424,7 +427,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="7i0-qG-mZJ">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="VL7-kk-hSH" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="VL7-kk-hSH" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="dVD-4h-A9c"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iQT-LI-DUs">
@@ -443,7 +446,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="o8Y-2L-9La"/>
+        <segue reference="IqM-2s-1Uf"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Screen Shot 2021-05-27 at 6.40.58 PM-1" width="232" height="208.66667175292969"/>
