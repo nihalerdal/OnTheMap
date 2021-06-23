@@ -48,6 +48,8 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func findLocationTapped(_ sender: Any) {
         if locationTextField.text == "" || linkTextField.text == "" {
+            locationTextField.resignFirstResponder()
+            linkTextField.resignFirstResponder()
             showAlert()
         }else {
             guard let location = locationTextField.text else {return}
