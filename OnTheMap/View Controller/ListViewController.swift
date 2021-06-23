@@ -49,7 +49,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func logOut(_ sender: Any) {
         UdacityClient.logout { success, error in
             if success{
-                self.dismiss(animated: true, completion: nil)
+                self.navigationController?.popToRootViewController(animated: true)
                 print("logged out")
             }else {
                 DispatchQueue.main.async {

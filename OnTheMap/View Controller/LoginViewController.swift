@@ -23,6 +23,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.delegate = self
         emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor : UIColor.gray])
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor : UIColor.gray])
+        navigationController?.navigationBar.isHidden = true
     }
     
     func setupTextField() {
@@ -37,6 +38,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.text = ""
         setupTextField()
         subscribeToKeyboardNotifications()
+        navigationController?.navigationBar.isHidden = true
         
     }
     
