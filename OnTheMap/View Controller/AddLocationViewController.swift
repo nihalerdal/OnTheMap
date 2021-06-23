@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-class AddLocationViewController: UIViewController {
+class AddLocationViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var linkTextField: UITextField!
@@ -19,9 +19,22 @@ class AddLocationViewController: UIViewController {
         super.viewDidLoad()
         
         tabBarController?.tabBar.isHidden = true
+        locationTextField.delegate = self
+        linkTextField.delegate = self
 
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let nextTag = textField.tag + 1
+
+        if let nextResponder = textField.superview?.viewWithTag(nextTag) {
+            nextResponder.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+
+        return true
+    }
 
     @IBAction func findLocationTapped(_ sender: Any) {
         if locationTextField.text == "" || linkTextField.text == "" {
@@ -34,6 +47,7 @@ class AddLocationViewController: UIViewController {
     
     
     @IBAction func cancel(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
         navigationController?.popToRootViewController(animated: true)
     }
     

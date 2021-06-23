@@ -34,9 +34,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         emailTextField.text = ""
         passwordTextField.text = ""
-        
-        subscribeToKeyboardNotifications()
         setupTextField()
+        subscribeToKeyboardNotifications()
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -94,10 +94,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-            textField.text = ""
-        }
-    
     func subscribeToKeyboardNotifications() {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -118,10 +114,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @objc func keyboardWillShow(_ notification:Notification) {
         
         if passwordTextField.isEditing || emailTextField.isEditing {
-            view.frame.origin.y -= getKeyboardHeight(notification)
+            view.frame.origin.y = (-1)*getKeyboardHeight(notification)
         }
     }
-    
     func getKeyboardHeight(_ notification:Notification) -> CGFloat {
         
         let userInfo = notification.userInfo
