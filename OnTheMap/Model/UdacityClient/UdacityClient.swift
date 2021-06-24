@@ -18,6 +18,10 @@ class UdacityClient {
         static var lastName = ""
     }
     
+    struct PreviousPostLocationObject {
+        static var objectId = ""
+    }
+    
     struct Auth {
         static var accountKey = ""
         static var sessionId = ""
@@ -41,7 +45,7 @@ class UdacityClient {
             case .getLocations: return "https://onthemap-api.udacity.com/v1/StudentLocation?order=-updatedAt"
             case .postLocation: return "https://onthemap-api.udacity.com/v1/StudentLocation"
             case .getUserData: return "https://onthemap-api.udacity.com/v1/users/\(Auth.accountKey)"
-            case .updateLocation: return "https://onthemap-api.udacity.com/v1/StudentLocation/\(Auth.accountKey)"
+            case .updateLocation: return "https://onthemap-api.udacity.com/v1/StudentLocation/\(PreviousPostLocationObject.objectId)"
             case .logout: return "https://onthemap-api.udacity.com/v1/session"
             case .webAuth: return "https://auth.udacity.com/sign-up"
                 
@@ -172,6 +176,7 @@ class UdacityClient {
         taskForPOSTRequest(url: Endpoints.postLocation.url, responseType: PostLocationResponse.self, body: body) { response, error in
             if let response = response {
                 User.createdAt = response.createdAt
+                PreviousPostLocationObject.objectId = response.objectId
                 print(response.createdAt)
                 completion(true, nil)
             }else{
@@ -267,8 +272,7 @@ class UdacityClient {
         var request = URLRequest(url: Endpoints.updateLocation.url)
         request.httpMethod = "PUT"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = "{\"uniqueKey\": \(Auth.accountKey), \"firstName\":\(firstName), \"lastName\": \(lastName),\"mapString\": \(mapString), \"mediaURL\": \(mediaURL),\"latitude\": \(latitude), \"longitude\": \(longitude)}".data(using: .utf8)
-        
+        request.httpBody = "{\"uniqueKey\": \"\(Auth.accountKey)\", \"firstName\":\"\(firstName)\", \"lastName\": \"\(lastName)\",\"mapString\": \"\(mapString)\", \"mediaURL\": \"\(mediaURL)\",\"latitude\": \(latitude), \"longitude\": \(longitude)}".data(using: .utf8)
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else {
