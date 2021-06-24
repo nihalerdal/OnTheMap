@@ -147,13 +147,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="HGb-ij-qqK">
-                                <rect key="frame" x="0.0" y="44" width="414" height="629"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="735"/>
                                 <connections>
                                     <outlet property="delegate" destination="HuI-R3-Wc7" id="yRg-t9-qcg"/>
                                 </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhg-NT-ukc">
-                                <rect key="frame" x="50" y="581" width="314" height="35"/>
+                                <rect key="frame" x="50" y="624" width="314" height="53"/>
                                 <color key="backgroundColor" red="0.46462791650000002" green="0.79326918879999997" blue="0.96620899439999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="53" id="irg-Jj-Ogg"/>
@@ -175,8 +175,7 @@
                             <constraint firstItem="HGb-ij-qqK" firstAttribute="leading" secondItem="Pzj-TI-oyA" secondAttribute="leading" id="ZXC-J9-tfN"/>
                             <constraint firstAttribute="bottomMargin" secondItem="HGb-ij-qqK" secondAttribute="bottom" constant="-92" id="ac9-C6-cyu"/>
                             <constraint firstItem="HGb-ij-qqK" firstAttribute="top" secondItem="Pzj-TI-oyA" secondAttribute="top" id="hGC-Hp-vMj"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="vhg-NT-ukc" secondAttribute="bottom" constant="-35" id="reL-xh-GAs"/>
-                            <constraint firstItem="vhg-NT-ukc" firstAttribute="top" secondItem="Pzj-TI-oyA" secondAttribute="top" constant="537" id="xRU-S9-HUj"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="vhg-NT-ukc" secondAttribute="bottom" constant="10" id="reL-xh-GAs"/>
                             <constraint firstItem="vhg-NT-ukc" firstAttribute="centerX" secondItem="HGb-ij-qqK" secondAttribute="centerX" id="yJN-Ke-bto"/>
                         </constraints>
                     </view>
