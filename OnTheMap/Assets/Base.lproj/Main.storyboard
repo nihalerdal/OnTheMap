@@ -48,7 +48,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="vTK-He-vuJ" id="FhC-4P-apt"/>
-                        <segue destination="CBj-ri-fiR" kind="push" identifier="AddStudentFromMapView" id="IqM-2s-1Uf"/>
+                        <segue destination="CBj-ri-fiR" kind="show" identifier="AddStudentFromMapView" id="IqM-2s-1Uf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Y3-5M-fe4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -131,7 +131,7 @@
                     <connections>
                         <outlet property="linkTextField" destination="Ooy-c2-Yhw" id="CBj-yd-yzt"/>
                         <outlet property="locationTextField" destination="Utq-JZ-ScD" id="2x9-xd-aLd"/>
-                        <segue destination="HuI-R3-Wc7" kind="push" identifier="FindLocationSegue" id="yBl-AG-B64"/>
+                        <segue destination="HuI-R3-Wc7" kind="show" identifier="FindLocationSegue" id="yBl-AG-B64"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4BY-s7-l2e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -262,7 +262,7 @@
                     <connections>
                         <outlet property="refreshButton" destination="fqn-4W-GGp" id="8oq-f6-yhw"/>
                         <outlet property="tableView" destination="bvW-Qc-ATJ" id="uwB-TK-YTQ"/>
-                        <segue destination="CBj-ri-fiR" kind="push" identifier="AddStudentFromList" id="o8Y-2L-9La"/>
+                        <segue destination="CBj-ri-fiR" kind="show" identifier="AddStudentFromList" id="o8Y-2L-9La"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fan-7v-NGz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -464,7 +464,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="IqM-2s-1Uf"/>
+        <segue reference="o8Y-2L-9La"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Screen Shot 2021-05-27 at 6.40.58 PM-1" width="232" height="208.66667175292969"/>

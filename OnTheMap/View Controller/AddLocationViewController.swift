@@ -47,9 +47,9 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func findLocationTapped(_ sender: Any) {
+        locationTextField.resignFirstResponder()
+        linkTextField.resignFirstResponder()
         if locationTextField.text == "" || linkTextField.text == "" {
-            locationTextField.resignFirstResponder()
-            linkTextField.resignFirstResponder()
             showAlert()
         }else {
             guard let location = locationTextField.text else {return}
@@ -59,7 +59,7 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func cancel(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+//        dismiss(animated: true, completion: nil)
         navigationController?.popToRootViewController(animated: true)
     }
     

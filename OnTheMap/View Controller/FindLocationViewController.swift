@@ -46,7 +46,6 @@ class FindLocationViewController: UIViewController, MKMapViewDelegate {
     
     func handlePostLocation(success: Bool, error: Error?){
         if success {
-            dismiss(animated: true, completion: nil)
             UdacityClient.User.location = location
             print(UdacityClient.User.location)
             UdacityClient.User.link = link
@@ -89,7 +88,7 @@ class FindLocationViewController: UIViewController, MKMapViewDelegate {
         let reuseId = "pin"
         
         var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
-
+        
         if  pinView == nil {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView?.canShowCallout = true
@@ -99,13 +98,13 @@ class FindLocationViewController: UIViewController, MKMapViewDelegate {
         return pinView
     }
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

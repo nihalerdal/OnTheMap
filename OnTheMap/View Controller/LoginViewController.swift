@@ -68,7 +68,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             }
             
         }else{
+            emailTextField.resignFirstResponder()
+            passwordTextField.resignFirstResponder()
             showLoginFailure(message: error?.localizedDescription ?? "")
+           
         }
     }
     
