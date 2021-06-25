@@ -28,6 +28,7 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
     }
     override func viewWillAppear(_ animated: Bool) {
         subscribeToKeyboardNotifications()
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
