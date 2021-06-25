@@ -10,7 +10,6 @@ import UIKit
 class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var refreshButton: UIBarButtonItem!
-    var students = [StudentLocation]()
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -22,8 +21,17 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         
         UdacityClient.getStudentLocations { studentlocationresults, error in
-            self.students = studentlocationresults
-            self.tableView.reloadData()
+            
+            if error == nil {
+                Student.locations = studentlocationresults
+                self.tableView.reloadData()
+                
+            } else {
+                let alert = UIAlertController(title: "Error", message: "Data couldn't load", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+            }
         }
     }
     
@@ -39,7 +47,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         refreshButton.isEnabled = false
         UdacityClient.getStudentLocations { studentlocationresults, error in
-            self.students = studentlocationresults
+            Student.locations = studentlocationresults
             self.tableView.reloadData()
         }
         refreshButton.isEnabled = true
@@ -64,7 +72,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        students.count
+        Student.locations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -74,7 +82,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
             fatalError("error")
             
         }
-            let student = students[indexPath.row]
+        let student = Student.locations[indexPath.row]
             cell.textLabel?.text = "\(student.firstName)" + " " + "\(student.lastName)"
             cell.detailTextLabel?.text = "\(student.mediaURL)"
         
@@ -84,7 +92,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let student = students[indexPath.row]
+        let student = Student.locations[indexPath.row]
         guard let url = URL(string: student.mediaURL) else {return}
         
         UIApplication.shared.open(url, options: [:], completionHandler: nil)

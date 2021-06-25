@@ -12,7 +12,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
-    var students : [StudentLocation] = []
+//    var students : [StudentLocation] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,18 +26,20 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func showPins(){
-//        data that you can download from parse.
-             UdacityClient.getStudentLocations { studentlocationresults, error in
-                 self.students = studentlocationresults
-                 
-                 //        The point annotations will be stored in this array, and then provided to the map view.
-                 var annotations = [MKPointAnnotation]()
-                 
-                 // The "student" array is loaded with the sample data below. We are using the dictionaries
-                 // to create map annotations. This would be more stylish if the dictionaries were being
-                 // used to create custom structs. Perhaps StudentLocation structs.
-                 for student in self.students {
-                     
+        //        data that you can download from parse.
+        UdacityClient.getStudentLocations { studentlocationresults, error in
+            
+            if error == nil {
+                Student.locations = studentlocationresults
+                
+                //        The point annotations will be stored in this array, and then provided to the map view.
+                var annotations = [MKPointAnnotation]()
+                
+                // The "student" array is loaded with the sample data below. We are using the dictionaries
+                // to create map annotations. This would be more stylish if the dictionaries were being
+                // used to create custom structs. Perhaps StudentLocation structs.
+                for student in Student.locations {
+                    
                     let lat = CLLocationDegrees(student.latitude )
                     let long = CLLocationDegrees(student.longitude)
                     
@@ -50,10 +52,15 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                     // Finally we place the annotation in an array of annotations.
                     annotations.append(annotation)
                     self.mapView.addAnnotation(annotation)
-                 }
-             }
-        //        When the array is complete, we add the annotations to the map.
-        //        self.mapView.addAnnotation(annotations)
+                }
+                
+            } else {
+                let alert = UIAlertController(title: "Error", message: "Data couldn't load", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
     }
     // MARK: - MKMapViewDelegate
 
@@ -140,19 +147,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             }
         }
     }
-    
-    
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
