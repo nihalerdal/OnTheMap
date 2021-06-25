@@ -12,6 +12,8 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var linkTextField: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var findLocation: UIButton!
     var latitude : Double = 0.0
     var longitude : Double = 0.0 // -> (CLLocationCoordinate2D(latitude:Double, logitude: Double))
     
@@ -19,6 +21,7 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         tabBarController?.tabBar.isHidden = true
+        activityIndicator.isHidden = true
         locationTextField.delegate = self
         linkTextField.delegate = self
         
@@ -66,6 +69,7 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
     
     
     func findGeocode(_ address: String) {
+        setActivityIndicator(true)
         CLGeocoder().geocodeAddressString(address) { (placemark, error)
             in
             if error == nil {
@@ -87,6 +91,7 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
                 self.present(alert, animated: true, completion: nil)
                 print("geocode error")
             }
+            self.setActivityIndicator(false)
         }
     }
     
@@ -144,4 +149,22 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
         view.frame.origin.y = 0
     }
 
+    
+    func setActivityIndicator(_ running : Bool){
+        
+        if running {
+            DispatchQueue.main.async {
+                self.activityIndicator.startAnimating()
+            }
+        }else {
+            DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
+            }
+        }
+        
+        locationTextField.isEnabled = !running
+        linkTextField.isEnabled = !running
+        findLocation.isEnabled = !running
+        activityIndicator.isHidden = !running
+    }
 }

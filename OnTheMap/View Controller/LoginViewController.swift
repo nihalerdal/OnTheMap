@@ -13,11 +13,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         
         emailTextField.text = ""
         passwordTextField.text = ""
+        activityIndicator.isHidden = true
+        
         setupTextField()
         emailTextField.delegate = self
         passwordTextField.delegate = self
@@ -55,12 +58,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 
             }
         }else {
+            setLoggingIn(true)
                 UdacityClient.login(username: emailTextField.text ?? "", password: passwordTextField.text ?? "", completion: handleLoginResponse(success:error:))
             }
     }
     
     
     func handleLoginResponse(success: Bool, error: Error?){
+        setLoggingIn(false)
         if success{
             print(UdacityClient.Auth.sessionId)
             DispatchQueue.main.async {
@@ -76,6 +81,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func signUp(_ sender: Any) {
+        setLoggingIn(true)
         UIApplication.shared.open(UdacityClient.Endpoints.webAuth.url, options: [:], completionHandler: nil)
     }
     
@@ -131,5 +137,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @objc func keyboardWillHide(_ notification:Notification) {
         
         view.frame.origin.y = 0
+    }
+    
+    func setLoggingIn(_ loggingIn : Bool){
+        
+        if loggingIn {
+            DispatchQueue.main.async {
+                self.activityIndicator.startAnimating()
+            }
+        }else {
+            DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
+            }
+        }
+        
+        emailTextField.isEnabled = !loggingIn
+        passwordTextField.isEnabled = !loggingIn
+        loginButton.isEnabled = !loggingIn
+        signUpButton.isEnabled = !loggingIn
+        activityIndicator.isHidden = !loggingIn
     }
 }

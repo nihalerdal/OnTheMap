@@ -12,6 +12,7 @@ class FindLocationViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var finishButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var link : String = ""
     var location : String = ""
@@ -23,11 +24,13 @@ class FindLocationViewController: UIViewController, MKMapViewDelegate {
 
         createMapAnnotation()
         tabBarController?.tabBar.isHidden = true
+        activityIndicator.isHidden = true
 
     }
     
 
     @IBAction func finishTapped(_ sender: Any) {
+        setActivityIndicator(true)
         if UdacityClient.User.createdAt == "" {
             UdacityClient.getUserData(completion: handleGetUserData(firstName:lastName:error:))
         }else {
@@ -45,6 +48,7 @@ class FindLocationViewController: UIViewController, MKMapViewDelegate {
     
     
     func handlePostLocation(success: Bool, error: Error?){
+        setActivityIndicator(false)
         if success {
             UdacityClient.User.location = location
             print(UdacityClient.User.location)
@@ -97,14 +101,21 @@ class FindLocationViewController: UIViewController, MKMapViewDelegate {
         }
         return pinView
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    
+    func setActivityIndicator(_ running : Bool){
+        
+        if running {
+            DispatchQueue.main.async {
+                self.activityIndicator.startAnimating()
+            }
+        }else {
+            DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
+            }
+        }
+        
+        finishButton.isEnabled = !running
+        activityIndicator.isHidden = !running
+    }
     
 }

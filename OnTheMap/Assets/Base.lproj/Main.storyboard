@@ -113,12 +113,17 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="sgE-gg-pdw">
+                                <rect key="frame" x="187" y="599" width="41" height="31"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2UJ-Vh-hrx"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="LfD-Xb-qcO" firstAttribute="centerY" secondItem="Dpu-KO-uOy" secondAttribute="centerY" id="45j-AD-cMP"/>
                             <constraint firstItem="LfD-Xb-qcO" firstAttribute="centerX" secondItem="Dpu-KO-uOy" secondAttribute="centerX" id="I7T-tg-giR"/>
+                            <constraint firstItem="sgE-gg-pdw" firstAttribute="centerX" secondItem="Dpu-KO-uOy" secondAttribute="centerX" id="aQe-YZ-MWX"/>
+                            <constraint firstItem="sgE-gg-pdw" firstAttribute="top" secondItem="LfD-Xb-qcO" secondAttribute="bottom" id="tbw-jG-wBd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Location" id="bmt-M2-Ykw">
@@ -129,6 +134,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="sgE-gg-pdw" id="nsc-JA-RhV"/>
+                        <outlet property="findLocation" destination="Whf-0Z-M44" id="qnc-sD-sFA"/>
                         <outlet property="linkTextField" destination="Ooy-c2-Yhw" id="CBj-yd-yzt"/>
                         <outlet property="locationTextField" destination="Utq-JZ-ScD" id="2x9-xd-aLd"/>
                         <segue destination="HuI-R3-Wc7" kind="show" identifier="FindLocationSegue" id="yBl-AG-B64"/>
@@ -166,21 +173,27 @@
                                     <action selector="finishTapped:" destination="HuI-R3-Wc7" eventType="touchUpInside" id="fhr-vZ-YUV"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="z16-OH-hxP">
+                                <rect key="frame" x="197" y="358" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Pzj-TI-oyA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vhg-NT-ukc" firstAttribute="centerX" secondItem="OtU-My-lvI" secondAttribute="centerX" id="Hjc-YY-KU2"/>
+                            <constraint firstItem="z16-OH-hxP" firstAttribute="centerY" secondItem="OtU-My-lvI" secondAttribute="centerY" id="J6T-Kl-2Zw"/>
                             <constraint firstItem="vhg-NT-ukc" firstAttribute="leading" secondItem="Pzj-TI-oyA" secondAttribute="leading" constant="50" id="PyR-Lc-Nkr"/>
                             <constraint firstItem="HGb-ij-qqK" firstAttribute="leading" secondItem="Pzj-TI-oyA" secondAttribute="leading" id="ZXC-J9-tfN"/>
                             <constraint firstAttribute="bottomMargin" secondItem="HGb-ij-qqK" secondAttribute="bottom" constant="-92" id="ac9-C6-cyu"/>
                             <constraint firstItem="HGb-ij-qqK" firstAttribute="top" secondItem="Pzj-TI-oyA" secondAttribute="top" id="hGC-Hp-vMj"/>
                             <constraint firstAttribute="bottomMargin" secondItem="vhg-NT-ukc" secondAttribute="bottom" constant="10" id="reL-xh-GAs"/>
                             <constraint firstItem="vhg-NT-ukc" firstAttribute="centerX" secondItem="HGb-ij-qqK" secondAttribute="centerX" id="yJN-Ke-bto"/>
+                            <constraint firstItem="z16-OH-hxP" firstAttribute="centerX" secondItem="OtU-My-lvI" secondAttribute="centerX" id="yfj-tl-sBo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Location" id="q6t-Tv-QLB"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="z16-OH-hxP" id="KuO-E6-JdQ"/>
                         <outlet property="finishButton" destination="vhg-NT-ukc" id="dRX-Rb-dHA"/>
                         <outlet property="mapView" destination="HGb-ij-qqK" id="jV4-r4-mBa"/>
                     </connections>
@@ -403,16 +416,22 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="JKj-iG-GFY">
+                                <rect key="frame" x="197" y="634" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kvL-1Y-W9e"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="JKj-iG-GFY" firstAttribute="top" secondItem="TZx-v3-0F8" secondAttribute="bottom" id="4CM-dU-vQu"/>
                             <constraint firstItem="TZx-v3-0F8" firstAttribute="centerX" secondItem="xGk-Y9-aj6" secondAttribute="centerX" id="B9f-Eq-Dmu"/>
+                            <constraint firstItem="JKj-iG-GFY" firstAttribute="centerX" secondItem="xGk-Y9-aj6" secondAttribute="centerX" id="KUi-SC-ebo"/>
                             <constraint firstItem="TZx-v3-0F8" firstAttribute="centerY" secondItem="xGk-Y9-aj6" secondAttribute="centerY" id="rgT-i0-g1n"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="udv-WI-pUC"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="JKj-iG-GFY" id="2ru-Gl-51k"/>
                         <outlet property="emailTextField" destination="iRZ-cD-zWw" id="b4t-s2-CWN"/>
                         <outlet property="loginButton" destination="cEA-wX-pBT" id="wUR-d5-W2P"/>
                         <outlet property="passwordTextField" destination="lTd-fn-UIK" id="WoX-YQ-Che"/>
