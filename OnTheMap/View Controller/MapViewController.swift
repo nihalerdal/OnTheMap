@@ -102,7 +102,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let okAction = UIAlertAction(title: "Overwrite", style: .default) { action in
             if let vc = self.storyboard?.instantiateViewController(identifier: "AddLocationViewController") as? AddLocationViewController { // -- performsegue de ayni sekilde calisir mi ? yoksa baslangic noktasi farkli diye sacmalar mi segue ile buranin tetikleyicisi -> + butonundan segue yi kaldirdim yoksa if i gormedi.
                 vc.loadView() //-> pushViewController dan once gorunum yuklenmiyor normalde, yuklenmezse de icindekiler baslatilamiyor. o yuzden once yukluyorum. sonra alanlari dolduruyorum
-                self.tabBarController?.tabBar.isHidden = true
+                vc.viewDidLoad()
                 vc.linkTextField.text = UdacityClient.User.link
                 vc.locationTextField.text = UdacityClient.User.location
                 self.navigationController?.pushViewController(vc, animated: true)

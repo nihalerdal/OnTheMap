@@ -41,6 +41,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         subscribeToKeyboardNotifications()
         navigationController?.navigationBar.isHidden = true
         
+        //After getting an alert message while loggining related other apps.
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -83,6 +87,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func signUp(_ sender: Any) {
         setLoggingIn(true)
         UIApplication.shared.open(UdacityClient.Endpoints.webAuth.url, options: [:], completionHandler: nil)
+        setLoggingIn(false)
     }
     
     

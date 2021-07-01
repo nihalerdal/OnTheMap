@@ -2,7 +2,7 @@
 //  StudentModel.swift
 //  OnTheMap
 //
-//  Created by Nihal Erdal on 6/24/21.
+//  Created by Nihal Erdal on 6/30/21.
 //
 
 import Foundation
