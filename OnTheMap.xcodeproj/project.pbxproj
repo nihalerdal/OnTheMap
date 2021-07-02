@@ -26,6 +26,8 @@
 		953D5F4526704DCF000E7A54 /* PostLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D5F4426704DCF000E7A54 /* PostLocation.swift */; };
 		953D5F4726705AA6000E7A54 /* PostLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D5F4626705AA6000E7A54 /* PostLocationResponse.swift */; };
 		953D5F4926719EB0000E7A54 /* GetUserDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D5F4826719EB0000E7A54 /* GetUserDataResponse.swift */; };
+		953D5F5E268E97F8000E7A54 /* StudentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D5F5D268E97F8000E7A54 /* StudentModel.swift */; };
+		953D5F60268E98A5000E7A54 /* UpdateLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D5F5F268E98A5000E7A54 /* UpdateLocationResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		953D5F4426704DCF000E7A54 /* PostLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLocation.swift; sourceTree = "<group>"; };
 		953D5F4626705AA6000E7A54 /* PostLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLocationResponse.swift; sourceTree = "<group>"; };
 		953D5F4826719EB0000E7A54 /* GetUserDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserDataResponse.swift; sourceTree = "<group>"; };
+		953D5F5D268E97F8000E7A54 /* StudentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentModel.swift; sourceTree = "<group>"; };
+		953D5F5F268E98A5000E7A54 /* UpdateLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLocationResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +152,7 @@
 				953D5F4126686AA6000E7A54 /* StudentLocationResults.swift */,
 				953D5F4826719EB0000E7A54 /* GetUserDataResponse.swift */,
 				953D5F4626705AA6000E7A54 /* PostLocationResponse.swift */,
+				953D5F5F268E98A5000E7A54 /* UpdateLocationResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -155,11 +160,28 @@
 		953D5F432669BA7E000E7A54 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				953D5F5C268E97C3000E7A54 /* Data */,
 				953D5F382666EE6F000E7A54 /* UdacityClient */,
+				953D5F5B268E9674000E7A54 /* Network */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		953D5F5B268E9674000E7A54 /* Network */ = {
+			isa = PBXGroup;
+			children = (
 				953D5F392666F0B5000E7A54 /* Requests */,
 				953D5F3A2666F0CE000E7A54 /* Responses */,
 			);
-			path = Model;
+			path = Network;
+			sourceTree = "<group>";
+		};
+		953D5F5C268E97C3000E7A54 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				953D5F5D268E97F8000E7A54 /* StudentModel.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,7 +258,9 @@
 				953D5F4226686AA6000E7A54 /* StudentLocationResults.swift in Sources */,
 				953D5F4526704DCF000E7A54 /* PostLocation.swift in Sources */,
 				953D5F2A2661BC51000E7A54 /* LoginViewController.swift in Sources */,
+				953D5F5E268E97F8000E7A54 /* StudentModel.swift in Sources */,
 				953D5F302661BCED000E7A54 /* AddLocationViewController.swift in Sources */,
+				953D5F60268E98A5000E7A54 /* UpdateLocationResponse.swift in Sources */,
 				953D5F342661C6BE000E7A54 /* LocationTableViewCell.swift in Sources */,
 				953D5F3C2666F5F3000E7A54 /* LoginRequest.swift in Sources */,
 				953D5F1426607D76000E7A54 /* AppDelegate.swift in Sources */,
